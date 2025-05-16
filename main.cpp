@@ -14,14 +14,17 @@ void processStudents(std::ifstream &inputFile, std::ofstream &outputFile);
 
 int main()
 {
+    //Open the input and output files
     std::ifstream inputFile("input file.txt");
     std::ofstream outputFile("output.txt");
 
+    //check if the input or output files can be read or written
     if(!inputFile || !outputFile)
     {
         std::cerr << "Error creating or reading files!" << '\n';
         return 1;
     }
+    //skip the header line in the input file
     std::string headerSkip;
     getline(inputFile, headerSkip);
     processStudents(inputFile, outputFile);
@@ -83,10 +86,12 @@ char assignGrade(float finalMark)
 }
 void writeStudentResult(std::ofstream &outputFile, int studentID, float finalMark, int minimumMark, int maximumMark, char grade)
 {
+    //write this to the output file
     outputFile << studentID << " Final: " << std::fixed << std::setprecision(2)  << finalMark << " Min: " << minimumMark << " Max:" <<std::setw(3)<< maximumMark << " Grade: "  << grade << '\n'; 
 }
 void writeClassSummary(std::ofstream &outputFile, float maximumFinalMark, int maximumStudentID, float minimumFinalMark, int minimumStudentID)
 {
+    //this will be written after the write student function is used.
     outputFile << "\nClass Summary:\n";
     outputFile << "Highest Final Mark: " << maximumFinalMark << "(Student ID: " << std::fixed << std::setprecision(2)<< maximumStudentID << ")" << '\n';
     outputFile << "Lowest Final Mark: " << minimumFinalMark << "(Student ID: " << minimumStudentID << ")" << '\n'; 
@@ -102,6 +107,7 @@ void processStudents(std::ifstream &inputFile, std::ofstream &outputFile)
 
     while(inputFile >> studentID >> courseCode >> test1 >> test2 >> test3 >> exam)
     {
+        //get the testAverage, finalMark and round the final Mark
         testAverage = getTestAverage(test1, test2, test3);
         finalMark = getFinalMark(testAverage, exam);
         finalMark = rounder(finalMark);
