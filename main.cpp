@@ -31,15 +31,18 @@ int main()
 
     return 0;
 }
+
 //Details of what they actually do.
 float getTestAverage(int test1, int test2, int test3)
 {
     return (test1+test2+test3)/3.0;
 }
+
 float getFinalMark(float testAverage, int exam)
 {
     return (testAverage*0.4) + (exam*0.6);
 }
+
 int getMinimumMark(int test1, int test2, int test3, int exam)
 {
     int minimum = test1;
@@ -51,6 +54,7 @@ int getMinimumMark(int test1, int test2, int test3, int exam)
         minimum = exam;
     return minimum;
 }
+
 int getMaximumMark(int test1, int test2, int test3, int exam)
 {
     int maximum = test1;
@@ -62,6 +66,7 @@ int getMaximumMark(int test1, int test2, int test3, int exam)
         maximum = exam;
     return maximum;
 }
+
 float rounder(float mark)
 {
     int nonDecimalMark = mark;
@@ -71,6 +76,7 @@ float rounder(float mark)
     else
         return mark - decimalPlace;
 }
+
 char assignGrade(float finalMark)
 {
     if(finalMark >= 80)
@@ -84,6 +90,7 @@ char assignGrade(float finalMark)
     else
         return 'F';
 }
+
 void writeStudentResult(std::ofstream &outputFile, int studentID, float finalMark, int minimumMark, int maximumMark, char grade)
 {
     //write this to the output file
@@ -97,6 +104,7 @@ void writeClassSummary(std::ofstream &outputFile, float maximumFinalMark, int ma
     outputFile << "Lowest Final Mark: " << minimumFinalMark << "(Student ID: " << minimumStudentID << ")" << '\n'; 
 
 }
+
 void processStudents(std::ifstream &inputFile, std::ofstream &outputFile)
 {
     int studentID = 0, test1 = 0, test2 = 0, test3 = 0, exam = 0, minimumMark = 0, maximumMark = 0;
