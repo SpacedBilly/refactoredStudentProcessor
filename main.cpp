@@ -96,6 +96,7 @@ void writeStudentResult(std::ofstream &outputFile, int studentID, float finalMar
     //write this to the output file
     outputFile << studentID << " Final: " << std::fixed << std::setprecision(2)  << finalMark << " Min: " << minimumMark << " Max:" <<std::setw(3)<< maximumMark << " Grade: "  << grade << '\n'; 
 }
+
 void writeClassSummary(std::ofstream &outputFile, float maximumFinalMark, int maximumStudentID, float minimumFinalMark, int minimumStudentID)
 {
     //this will be written after the write student function is used.
