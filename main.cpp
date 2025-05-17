@@ -10,9 +10,15 @@ int main()
     std::ofstream outputFile("output.txt");
 
     //check if the input or output files can be read or written
-    if(!inputFile || !outputFile)
+    if(!inputFile)
     {
-        std::cerr << "Error creating or reading files!" << '\n';
+        std::cerr << "Error reading from the input file!" << '\n';
+        return 1;
+    }
+
+    if(!outputFile)
+    {
+        std::cerr << "Error creating the output file!" << '\n';
         return 1;
     }
     //skip the header line in the input file
